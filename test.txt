@@ -1,0 +1,27 @@
+iterate i in j {*@* dslnfdsnlf sdfsf ass
+    display f         *@* dslnfdsnlf sdfsf ass
+  display c
+      num pr = 1
+      bool flarr[] = {true, false, false}
+      /@num numarr[] = {1, 'd', 5}
+      pr++
+        display d
+      bool geo = true
+      /@ num a
+     /@ sfdsddf
+     sddffd
+     sdfds sdf@/
+           str abc = 'abc'
+           pr += 5
+      if pr >= 6 {
+            display pr
+            num ghi = 0
+            func ghi() {
+                  display "br"
+                  bool fl = true
+            }
+      }
+      func tbb():
+            display "hello"
+    f = read('C:/abc.txt') /@ sfdsddf fsdf sdfsdfs sfddsf @/
+   }
