@@ -45,21 +45,20 @@ class SymbolTable:
             elif '}' in i:
                 self.scope -= 1
             else:
-                i.insert(0, f"{self.scope - 1}")
+                i.insert(0, f"{self.scope}")
                 self.tokens.append(i)
 
     def __gen_symbol_table(self):
         for i in self.tokens:
             if i[1] in ["num", "str", "bool"]:
-                i[2] = i[2].split("[")[0]
                 if len(self.table) == 0:
-                    self.__insert(i[2], i[1], i[0])
+                    self.__insert(i[2], i[1], i[0], i[4])
                 else:
                     fl = self.__lookup(i[2], i[0])
                     if not fl:
                         raise Exception("Variable Already Defined in the Same Scope")
                     else:
-                        self.__insert(i[2], i[1], i[0])
+                        self.__insert(i[2], i[1], i[0], i[4])
     
     def __lookup(self, n, s):
         for i in self.table:
@@ -67,8 +66,8 @@ class SymbolTable:
                 return False
         return True
 
-    def __insert(self, n, d, s):
-        self.table.append([n, d, s])
+    def __insert(self, n, d, s, v):
+        self.table.append([n, d, s, v])
 
     def __write_table(self):
         open(os.path.join(self.log_path, "symbol_table.txt"), "w+").close()
@@ -114,6 +113,13 @@ class SymbolTable:
             fw.write("-"*19)
             fw.write("+")
             fw.write("\n")
+
+    def get_st(self):
+        valid_tk = []
+        for i in self.tokens:
+            if ("num" in i or "bool" in i or "str" in i):
+                valid_tk.append(i)
+        return valid_tk
 
 # For Testing Purpose
 if __name__ == "__main__":

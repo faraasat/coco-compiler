@@ -1,3 +1,5 @@
+bool cha = false
+num j[] = {1, 4, 5, 7}
 iterate i in j {*@* dslnfdsnlf sdfsf ass
     display f         *@* dslnfdsnlf sdfsf ass
   display c
@@ -21,7 +23,5 @@ iterate i in j {*@* dslnfdsnlf sdfsf ass
                   bool fl = true
             }
       }
-      func tbb():
-            display "hello"
     f = read('C:/abc.txt') /@ sfdsddf fsdf sdfsdfs sfddsf @/
    }

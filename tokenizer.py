@@ -132,6 +132,9 @@ class Tokenize:
         for i in self.tokens:
             fw.write(str(str(i) + ' '))
 
+    def get_tk(self):
+        return self.pre_tokens
+
 # For Testing Purpose
 if __name__ == "__main__":
     Tokenize("test.txt", os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819"))
