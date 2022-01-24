@@ -1,6 +1,7 @@
 from parser_components import iterate
 from parser_components import unless
 from parser_components import exec_unless
+from parser_components import if_else
 
 class Parse:
     def __init__(self, tk):
@@ -14,7 +15,7 @@ class Parse:
 
     def prse(self):
         for token in self.tokens:
-            # print(self.scope)
+            print(self.scope)
             if "}" in token and not "unless" in token:
                 self.scope -= 1
             if "}" in token and "unless" in token:
@@ -35,6 +36,18 @@ class Parse:
                     self.scope += 1
             elif token[0] == "exec":
                 if not exec_unless.Exec(token).get_val():
+                    self.raise_error()
+                else:
+                    self.scope += 1
+                    self.unless += 1
+            elif token[0] == "if":
+                if not if_else.If(token).get_val():
+                    self.raise_error()
+                else:
+                    self.scope += 1
+                    self.unless += 1
+            elif token[0] == "else":
+                if not if_else.Else(token).get_val():
                     self.raise_error()
                 else:
                     self.scope += 1

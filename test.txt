@@ -15,7 +15,7 @@ iterate i in j {*@* dslnfdsnlf sdfsf ass
      sdfds sdf@/
            str abc = 'abc'
            pr += 5
-      if pr >= 6 {
+      if(pr >= 6) {
             display pr
             num ghi = 0
             func ghi() {

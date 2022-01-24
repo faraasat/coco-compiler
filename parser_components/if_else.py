@@ -1,6 +1,7 @@
 import re
 
-class Unless:
+class Else:
+    pass
     def __init__(self, tk):
         self.tk = tk
         self.prsed = False
@@ -11,7 +12,35 @@ class Unless:
 
     def S(self):
         is_br = False
-        if not self.tk[0].split("(")[0] == "unless": self.raise_error("\"unless\" Expected. Invalid Token Found")
+        if not "else" in self.tk[0]:
+            self.raise_error("\"else\" Expected. Invalid Token Found")
+        else:
+            if "else" in self.tk[0]:
+                if self.tk[0][::-1][0] == "{":
+                    if self.tk[0].split("{")[0] == "else":
+                        pass
+                elif self.tk[1] == "{":
+                    pass
+                else:
+                    self.tk.pop(0)
+                    If(self.tk)
+        self.prsed = True
+
+    def get_val(self):
+        return self.prsed
+
+class If:
+    def __init__(self, tk):
+        self.tk = tk
+        self.prsed = False
+        self.S()
+
+    def raise_error(self, msg):
+        raise Exception(msg)
+
+    def S(self):
+        is_br = False
+        if not self.tk[0].split("(")[0] == "if": self.raise_error("\"if\" Expected. Invalid Token Found")
         if "True" in self.tk[0].split("(")[1]:
             if not self.tk[0][::-1][0] == "{":
                 if not self.tk[0][::-1][0] == ")":
@@ -44,6 +73,3 @@ class Unless:
             except:
                 self.raise_error("\"{\" Expected. Invalid Token Found")
         self.prsed = True
-
-    def get_val(self):
-        return self.prsed
