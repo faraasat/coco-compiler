@@ -28,7 +28,7 @@ class Unless:
                 is_br = True
                 if not self.tk[0][::-1][1] == ")":
                     self.raise_error("\")\" Expected. Invalid Token Found")
-        if (bool(re.match("[A-Za-z_]+[A-Za-z_0-9]*$", self.tk[0].split("(")[1])) or bool(re.match("[0-9]+$", self.tk[0].split("(")[1]))):
+        elif (bool(re.match("[A-Za-z_]+[A-Za-z_0-9]*$", self.tk[0].split("(")[1])) or bool(re.match("[0-9]+$", self.tk[0].split("(")[1]))):
             if not (self.tk[1] == "<" or self.tk[1] == ">" or self.tk[1] == "==" or self.tk[1] == ">=" or self.tk[1] == "<=" or self.tk[1] == "!=" or self.tk[1] == "<>"):
                 self.raise_error("Comparison Operator Expected. Invalid Token Found")
             if not (bool(re.match("[A-Za-z_]+[A-Za-z_0-9]*$", self.tk[2].split(")")[0])) or bool(re.match("[0-9]+$", self.tk[2].split(")")[0]))):
