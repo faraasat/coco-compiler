@@ -24,3 +24,4 @@ class Parse:
                     self.raise_error("Error While Parsing!")
                 else:
                     self.scope += 1
+            

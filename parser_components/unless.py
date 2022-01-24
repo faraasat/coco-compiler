@@ -10,24 +10,36 @@ class Unless:
         raise Exception(msg)
 
     def S(self):
-        print("Here")
-        self.tk.append("$")
         is_br = False
-        if not self.tk[0] == "iterate": self.raise_error("\"iterate\" Expected. Invalid Token Found")
-        if not bool(re.match("[a-zA-Z_]+[a-zA-Z_0-9]*$", self.tk[1])): self.raise_error(f"Got {tk[1]}. Invalid Identifier Found")
-        if not self.tk[2] == "in": self.raise_error("\"in\" Expected. Invalid Token Found")
-        if not ("range" in self.tk[3]):
-            if not bool(re.match("[a-zA-Z_]+[a-zA-Z_0-9]*$", self.tk[3])):
-                if not self.tk[3][len(self.tk[3]) - 1] == "{": self.raise_error(f"Got {tk[3]}. Invalid Identifier Found")
-                else: is_br = True
-                if not re.match("[a-zA-Z_]+[a-zA-Z_0-9]*$", self.tk[3][0: len(self.tk[3]) - 1]): self.raise_error(f"Got {tk[3]}. Invalid Identifier Found")
-        elif "range" in self.tk[3]:
-            if self.tk[3][len(self.tk[3]) - 1] == "{": is_br = True
-            if not (self.tk[3][0: len(self.tk[3]) - 1]).split("(")[0] == "range": self.raise_error("\"range\" Expected. Invalid Token Found")
-            if not bool(re.match("[0-9]+$",((self.tk[3][0: len(self.tk[3]) - 1]).split("(")[1]).split(")")[0])):  self.raise_error("Integer Expected. Invalid Token Found")
+        if not self.tk[0].split("(")[0] == "unless": self.raise_error("\"unless\" Expected. Invalid Token Found")
+        if "True" in self.tk[0].split("(")[1]:
+            if not self.tk[0][::-1][0] == "{":
+                if not self.tk[0][::-1][0] == ")":
+                    self.raise_error("\")\" Expected. Invalid Token Found")
+            elif self.tk[0][::-1][0] == "{": 
+                is_br = True
+                if not self.tk[0][::-1][1] == ")":
+                    self.raise_error("\")\" Expected. Invalid Token Found")
+        elif "False" in self.tk[0].split("(")[1]:
+            if not self.tk[0][::-1][0] == "{":
+                if not self.tk[0][::-1][0] == ")":
+                    self.raise_error("\")\" Expected. Invalid Token Found")
+            elif self.tk[0][::-1][0] == "{": 
+                is_br = True
+                if not self.tk[0][::-1][1] == ")":
+                    self.raise_error("\")\" Expected. Invalid Token Found")
+        if (bool(re.match("[A-Za-z_]+[A-Za-z_0-9]*$", self.tk[0].split("(")[1])) or bool(re.match("[0-9]+$", self.tk[0].split("(")[1]))):
+            if not (self.tk[1] == "<" or self.tk[1] == ">" or self.tk[1] == "==" or self.tk[1] == ">=" or self.tk[1] == "<=" or self.tk[1] == "!=" or self.tk[1] == "<>"):
+                self.raise_error("Comparison Operator Expected. Invalid Token Found")
+            if not (bool(re.match("[A-Za-z_]+[A-Za-z_0-9]*$", self.tk[2].split(")")[0])) or bool(re.match("[0-9]+$", self.tk[2].split(")")[0]))):
+                self.raise_error("Invalid Value or Identifier Found")
+            if self.tk[2].split(")")[1] == "{":
+                is_br = True
+        else:
+            self.raise_error("Invalid Token Found after ( <--")
         if not is_br:
             try:
-                if not self.tk[4] == "{":
+                if not self.tk[3] == "{":
                     self.raise_error("\"{\" Expected. Invalid Token Found")
             except:
                 self.raise_error("\"{\" Expected. Invalid Token Found")

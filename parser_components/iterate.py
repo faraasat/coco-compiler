@@ -10,7 +10,6 @@ class Iterate:
         raise Exception(msg)
 
     def S(self):
-        self.tk.append("$")
         is_br = False
         if not self.tk[0] == "iterate": self.raise_error("\"iterate\" Expected. Invalid Token Found")
         if not bool(re.match("[a-zA-Z_]+[a-zA-Z_0-9]*$", self.tk[1])): self.raise_error(f"Got {tk[1]}. Invalid Identifier Found")
