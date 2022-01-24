@@ -2,6 +2,7 @@ from parser_components import iterate
 from parser_components import unless
 from parser_components import exec_unless
 from parser_components import if_else
+from parser_components import func
 
 class Parse:
     def __init__(self, tk):
@@ -15,7 +16,6 @@ class Parse:
 
     def prse(self):
         for token in self.tokens:
-            print(self.scope)
             if "}" in token and not "unless" in token:
                 self.scope -= 1
             if "}" in token and "unless" in token:
@@ -48,6 +48,12 @@ class Parse:
                     self.unless += 1
             elif token[0] == "else":
                 if not if_else.Else(token).get_val():
+                    self.raise_error()
+                else:
+                    self.scope += 1
+                    self.unless += 1
+            elif token[0] == "func":
+                if not func.Func(token).get_val():
                     self.raise_error()
                 else:
                     self.scope += 1
