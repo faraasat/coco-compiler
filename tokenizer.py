@@ -1,6 +1,8 @@
 import os
 import re
 
+import util as ut
+
 class Generate_Tokens:
     def __init__(self, tk):
         self._pre_tokens = tk
@@ -95,33 +97,10 @@ class Tokenize:
         self.pre_tokens = []
         self.is_m_comment = False
         self.tokens = []
-        self.__clear_file()
         self.__tokenize_text()
-
-    def __remove_comments(self, i):
-        i = i.split('*@*')[0]
-        if '/@' in i and '@/' in i:
-            i = i.split('/@')[0]
-        if '/@' in i:
-            self.is_m_comment = True
-            return ''
-        elif '@/' in i:
-            self.is_m_comment = False
-            return ''
-        elif self.is_m_comment:
-            return ''
-        return i
-
-    def __clear_file(self):
-        f = open(self.filename)
-        f = f.readlines()
-        for i in f:
-            h = (self.__remove_comments(i)).strip()
-            if h:
-                self.pre_tokens.append(h.rstrip('\n').split(' '))
     
     def __tokenize_text(self):
-        gt = Generate_Tokens(self.pre_tokens)
+        gt = Generate_Tokens(ut.clear_file(self.filename, self.is_m_comment))
         lex = gt.iter_pre_token()
         self.tokens = lex
         self.__write_tokens()        

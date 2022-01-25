@@ -1,5 +1,7 @@
 import os
 
+import util as ut
+
 class SymbolTable:
     def __init__(self, fn, lp):
         if not os.path.exists(fn):
@@ -11,34 +13,12 @@ class SymbolTable:
         self.tokens = []
         self.scope = 0
         self.table = []
-        self.__clear_file()
-        self.__gen_tk()
+        self.__set_scope()
         self.__gen_symbol_table()
         self.__write_table()
 
-    def __remove_comments(self, i):
-        i = i.split('*@*')[0]
-        if '/@' in i and '@/' in i:
-            i = i.split('/@')[0]
-        if '/@' in i:
-            self.is_m_comment = True
-            return ''
-        elif '@/' in i:
-            self.is_m_comment = False
-            return ''
-        elif self.is_m_comment:
-            return ''
-        return i
-
-    def __clear_file(self):
-        f = open(self.filename)
-        f = f.readlines()
-        for i in f:
-            h = (self.__remove_comments(i)).strip()
-            if h:
-                self.sbt.append(h.rstrip('\n').split(' '))
-
-    def __gen_tk(self):
+    def __set_scope(self):
+        self.sbt = ut.clear_file(self.filename, self.is_m_comment)
         for i in self.sbt:
             if '{' in i:
                 self.scope += 1

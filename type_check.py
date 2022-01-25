@@ -1,5 +1,7 @@
 import os
 
+import util as ut
+
 class TypeCheck:
     def __init__(self, fn):
         if not os.path.exists(fn):
@@ -7,30 +9,7 @@ class TypeCheck:
         self.filename = fn
         self.sbt = []
         self.is_m_comment = False
-        self.__clear_file()
         self.__check_type()
-
-    def __remove_comments(self, i):
-        i = i.split('*@*')[0]
-        if '/@' in i and '@/' in i:
-            i = i.split('/@')[0]
-        if '/@' in i:
-            self.is_m_comment = True
-            return ''
-        elif '@/' in i:
-            self.is_m_comment = False
-            return ''
-        elif self.is_m_comment:
-            return ''
-        return i
-
-    def __clear_file(self):
-        f = open(self.filename)
-        f = f.readlines()
-        for i in f:
-            h = (self.__remove_comments(i)).strip()
-            if h:
-                self.sbt.append(h.rstrip('\n').split(' '))
 
     def __error(self, msg):
         raise Exception(f"Datatype Error in \"{msg[0]} {msg[1]}\", Value and Datatype do not match!")
@@ -95,6 +74,7 @@ class TypeCheck:
                 self.__error(i)
 
     def __check_type(self):
+        self.sbt = ut.clear_file(self.filename, self.is_m_comment)
         count = 0
         try:
             for i in self.sbt:
