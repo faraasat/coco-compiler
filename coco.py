@@ -7,6 +7,7 @@ import symbol_table as st
 import type_check as tc
 import parser_coco as pc
 import imcg as im
+import generate_py as gp
 
 
 if __name__ == "__main__":
