@@ -13,6 +13,7 @@ class IntermediateCode:
         self.is_m_comment = False
         self.scope = 0
         self.__tokenize_text()
+        self.__write_imc()
 
     def check_arr(self, i):
         is_arr = False
@@ -135,20 +136,23 @@ class IntermediateCode:
                     iter_val.append("else:")
                 self.scope += 1
                 self.py_imc.append(iter_val)
+            elif "display" in i[0]:
+                iter_val = []
+                iter_val.append("\t"*self.scope)
+                iter_val.append(f"print({i[1]})")
+                self.py_imc.append(iter_val)
 
-            # print(i)
-        # for i in self.py_imc:
-        #     for j in i:
-        #         if j:
-        #             print(j, end="\t")
-        #     print()
-        # print(self.py_imc)
-
-    # def __write_tokens(self):
-    #     open(os.path.join(self.log_path, "token.txt"), "w+").close()
-    #     fw = open(os.path.join(self.log_path, "token.txt"), "a")
-    #     for i in self.tokens:
-    #         fw.write(str(str(i) + ' '))
+    def __write_imc(self):
+        open(os.path.join(self.log_path, "imc.txt"), "w+").close()
+        fw = open(os.path.join(self.log_path, "imc.txt"), "a")
+        for i in self.py_imc:
+            for j in i:
+                if j:
+                    fw.write(str(str(j) + ' '))
+            fw.write("\n")
+    
+    def get_imc_path(self):
+        return os.path.join(self.log_path, "imc.txt")
 
 # For Testing Purpose
 if __name__ == "__main__":

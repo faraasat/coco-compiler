@@ -19,4 +19,4 @@ if __name__ == "__main__":
     pc.Parse(tkz)
     stt = st.SymbolTable(working_path, os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819")).get_st()
     tc.TypeCheck(working_path)
-    im.IntermediateCode(working_path, os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819"))
+    imc = im.IntermediateCode(working_path, os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819")).get_imc_path()
