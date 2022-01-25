@@ -6,6 +6,7 @@ import util as ut
 import symbol_table as st
 import type_check as tc
 import parser_coco as pc
+import imcg as im
 
 
 if __name__ == "__main__":
@@ -18,3 +19,4 @@ if __name__ == "__main__":
     pc.Parse(tkz)
     stt = st.SymbolTable(working_path, os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819")).get_st()
     tc.TypeCheck(working_path)
+    im.IntermediateCode(working_path, os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819"))
