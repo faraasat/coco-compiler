@@ -14,6 +14,9 @@ class GeneratePy:
         open(os.path.join(self.log_path, "imc.py"), "w+").close()
         fw = open(os.path.join(self.log_path, "imc.py"), "a")
         fw.write(f)
+    
+    def get_path(self):
+        return os.path.join(self.log_path, "imc.py")
 
 if __name__ == "__main__":
     GeneratePy(os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819", "imc.txt"), os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819"))

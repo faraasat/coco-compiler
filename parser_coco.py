@@ -8,7 +8,6 @@ class Parse:
     def __init__(self, tk):
         self.tokens = tk
         self.scope = 0
-        self.unless = 0
         self.prse()
 
     def raise_error(self):
@@ -23,7 +22,6 @@ class Parse:
                     self.raise_error()
                 else:
                     self.scope -= 1
-                    self.unless -= 1
             elif token[0] == "iterate":
                 if not iterate.Iterate(token).get_val():
                     self.raise_error()
@@ -39,24 +37,20 @@ class Parse:
                     self.raise_error()
                 else:
                     self.scope += 1
-                    self.unless += 1
-            elif token[0] == "if":
+            elif "if" in token[0]:
                 if not if_else.If(token).get_val():
                     self.raise_error()
                 else:
                     self.scope += 1
-                    self.unless += 1
             elif token[0] == "else":
                 if not if_else.Else(token).get_val():
                     self.raise_error()
                 else:
                     self.scope += 1
-                    self.unless += 1
             elif token[0] == "func":
                 if not func.Func(token).get_val():
                     self.raise_error()
                 else:
                     self.scope += 1
-                    self.unless += 1
-        # if self.scope > 0 or self.unless > 0:
-        #     raise Exception("Missing token(s) \"}\"") 
+        if self.scope > 0:
+            raise Exception("Missing token(s) \"}\"") 

@@ -88,6 +88,9 @@ class Generate_Tokens:
                     self.__check_norm(next_token)
         return self._lexemes
 
+    def get_pre_tokens(self):
+        return self._pre_tokens
+
 class Tokenize:
     def __init__(self, fn, lp):
         if not os.path.exists(fn):
@@ -101,6 +104,7 @@ class Tokenize:
     
     def __tokenize_text(self):
         gt = Generate_Tokens(ut.clear_file(self.filename, self.is_m_comment))
+        self.pre_tokens = gt.get_pre_tokens()
         lex = gt.iter_pre_token()
         self.tokens = lex
         self.__write_tokens()        

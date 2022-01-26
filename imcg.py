@@ -36,6 +36,7 @@ class IntermediateCode:
                 self.scope -= 1
             elif (i[0] == "bool" or i[0] == "num" or i[0] == "str") and not ('[' in i[1] or ']' in i[1]):
                 i.pop(0)
+                if i[2] == "true" or i[2] == "false": i[2] = i[2].capitalize()
                 i.insert(0, "\t"*self.scope)
                 self.py_imc.append(i)
             elif (i[0] == "bool" or i[0] == "num" or i[0] == "str") and ('[' in i[1] or ']' in i[1]):
@@ -48,9 +49,11 @@ class IntermediateCode:
                 arr_val = self.check_arr(i)
                 for index, i in enumerate(arr_val):
                     if not index == len(arr_val) - 1:
-                        n_arr.append(f"{i}, ")
+                        if i == "true" or i == "false": n_arr.append(f"{i.capitalize()}, ")
+                        else: n_arr.append(f"{i}, ")
                     else:
-                        n_arr.append(i)
+                        if i == "true" or i == "false": n_arr.append(i.capitalize())
+                        else: n_arr.append(i)
                 n_arr.append("]")
                 self.py_imc.append(n_arr)
             elif "iterate" in i[0]:

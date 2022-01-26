@@ -73,3 +73,6 @@ class If:
             except:
                 self.raise_error("\"{\" Expected. Invalid Token Found")
         self.prsed = True
+
+    def get_val(self):
+        return self.prsed

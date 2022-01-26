@@ -1,13 +1,13 @@
 bool cha = false
 num j[] = {1, 4, 5, 7}
 iterate i in j {*@* dslnfdsnlf sdfsf ass
-    display f         *@* dslnfdsnlf sdfsf ass
-  display c
+    display i         *@* dslnfdsnlf sdfsf ass
+  display 2
       num pr = 1
       bool flarr[] = {true, false, false}
       /@num numarr[] = {1, 'd', 5}
       pr++
-        display d
+        display 3
       bool geo = true
       /@ num a
      /@ sfdsddf
