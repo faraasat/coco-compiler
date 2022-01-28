@@ -120,4 +120,5 @@ class Tokenize:
 
 # For Testing Purpose
 if __name__ == "__main__":
-    Tokenize("test.txt", os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819"))
+    if ut.get_config()["env"] == "testing":
+        Tokenize("test.txt", ut.get_test_log_path())

@@ -89,4 +89,5 @@ class TypeCheck:
 
 # For Testing Purpose
 if __name__ == "__main__":
-    TypeCheck("test.txt")
+    if ut.get_config()["env"] == "testing":
+        TypeCheck("test.txt")

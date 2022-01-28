@@ -159,4 +159,5 @@ class IntermediateCode:
 
 # For Testing Purpose
 if __name__ == "__main__":
-    IntermediateCode("test.txt", os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819"))
+    if ut.get_config()["env"] == "testing":
+        IntermediateCode("test.txt", ut.get_test_log_path())

@@ -1,5 +1,7 @@
 import os
 
+import util as ut
+
 class GeneratePy:
     def __init__(self, fn, lp):
         if not os.path.exists(fn):
@@ -18,5 +20,7 @@ class GeneratePy:
     def get_path(self):
         return os.path.join(self.log_path, "imc.py")
 
+# For Testing Purpose
 if __name__ == "__main__":
-    GeneratePy(os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819", "imc.txt"), os.path.join(os.path.dirname(__file__), "_logs", "2022-01-18_22-22-06-487819"))
+    if ut.get_config()["env"] == "testing":
+        GeneratePy(os.path.join(ut.get_test_log_path(), "imc.txt"), ut.get_test_log_path())
