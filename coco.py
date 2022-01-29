@@ -11,8 +11,7 @@ import imcg as im
 import generate_py as gp
 import parse_tree as pt
 
-
-if __name__ == "__main__":
+def main():
     conf = ut.get_config()
     if conf["env"] == "testing":
         #  Only For Testing Puropses
@@ -40,3 +39,6 @@ if __name__ == "__main__":
         imc = im.IntermediateCode(working_path, log_path).get_imc_path()
         gpp = gp.GeneratePy(os.path.join(log_path, "imc.txt"), log_path).get_path()
         subprocess.call(["python", gpp])
+
+if __name__ == "__main__":
+    main()
