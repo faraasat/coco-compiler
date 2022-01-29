@@ -18,10 +18,6 @@ iterate i in j {*@* dslnfdsnlf sdfsf ass
       if(pr >= 6) {
             display pr
             num ghi = 0
-            func ghi() {
-                  display "br"
-                  bool fl = true
-            }
       }
     f = read('C:/abc.txt') /@ sfdsddf fsdf sdfsdfs sfddsf @/
    }

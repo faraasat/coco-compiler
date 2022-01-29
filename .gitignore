@@ -1,2 +1,3 @@
-_logs
 __pycache__
+/_logs/*
+!/_logs/_test

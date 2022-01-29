@@ -9,6 +9,7 @@ import type_check as tc
 import parser_coco as pc
 import imcg as im
 import generate_py as gp
+import parse_tree as pt
 
 
 if __name__ == "__main__":
@@ -19,6 +20,7 @@ if __name__ == "__main__":
         working_path = os.path.join(os.getcwd(), "test.txt")
         tkz = tkr.Tokenize(working_path, test_path).get_tk()
         pc.Parse(tkz)
+        if ut.get_config()["generate_parse_tree"] == 1: pt.ParseTree("test.txt", ut.get_test_log_path())
         st.SymbolTable(working_path, test_path)
         tc.TypeCheck(working_path)
         im.IntermediateCode(working_path, test_path)
@@ -32,6 +34,7 @@ if __name__ == "__main__":
         working_path = os.path.join(os.getcwd(), sys.argv[1])
         tkz = tkr.Tokenize(working_path, log_path).get_tk()
         pc.Parse(tkz)
+        if ut.get_config()["generate_parse_tree"] == 1: pt.ParseTree("test.txt", ut.get_test_log_path())
         stt = st.SymbolTable(working_path, log_path).get_st()
         tc.TypeCheck(working_path)
         imc = im.IntermediateCode(working_path, log_path).get_imc_path()

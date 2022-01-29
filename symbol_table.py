@@ -8,7 +8,6 @@ class SymbolTable:
             raise Exception("Invalid Path Provided!")
         self.filename = fn
         self.log_path = lp
-        self.is_m_comment = False
         self.sbt = []
         self.tokens = []
         self.scope = 0
@@ -18,7 +17,7 @@ class SymbolTable:
         self.__write_table()
 
     def __set_scope(self):
-        self.sbt = ut.clear_file(self.filename, self.is_m_comment)
+        self.sbt = ut.clear_file(self.filename)
         for i in self.sbt:
             if '{' in i:
                 self.scope += 1

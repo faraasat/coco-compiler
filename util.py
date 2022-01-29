@@ -2,6 +2,8 @@ from datetime import datetime
 import os
 import json
 
+is_m_comment = False
+
 def absolute_path(dn):
     return os.path.join(os.path.dirname(__file__), dn)
 
@@ -17,7 +19,8 @@ def logger_dir():
     os.mkdir(absolute_path(os.path.join(get_config()["log_path"], dt_name)))
     return absolute_path(os.path.join(get_config()["log_path"], dt_name))
 
-def remove_comments(i, is_m_comment):
+def remove_comments(i):
+    global is_m_comment
     i = i.split('*@*')[0]
     if '/@' in i and '@/' in i:
         i = i.split('/@')[0]
@@ -31,12 +34,12 @@ def remove_comments(i, is_m_comment):
         return ''
     return i
 
-def clear_file(fn, imc):
+def clear_file(fn):
     pre_tokens = []
     f = open(fn)
     f = f.readlines()
     for i in f:
-        h = (remove_comments(i, imc)).strip()
+        h = (remove_comments(i)).strip()
         if h:
             pre_tokens.append(h.rstrip('\n').split(' '))
     return pre_tokens

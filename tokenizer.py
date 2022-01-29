@@ -98,12 +98,11 @@ class Tokenize:
         self.filename = fn
         self.log_path = lp
         self.pre_tokens = []
-        self.is_m_comment = False
         self.tokens = []
         self.__tokenize_text()
     
     def __tokenize_text(self):
-        gt = Generate_Tokens(ut.clear_file(self.filename, self.is_m_comment))
+        gt = Generate_Tokens(ut.clear_file(self.filename))
         self.pre_tokens = gt.get_pre_tokens()
         lex = gt.iter_pre_token()
         self.tokens = lex

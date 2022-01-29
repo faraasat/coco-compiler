@@ -8,7 +8,6 @@ class TypeCheck:
             raise Exception("Invalid Path Provided!")
         self.filename = fn
         self.sbt = []
-        self.is_m_comment = False
         self.__check_type()
 
     def __error(self, msg):
@@ -74,7 +73,7 @@ class TypeCheck:
                 self.__error(i)
 
     def __check_type(self):
-        self.sbt = ut.clear_file(self.filename, self.is_m_comment)
+        self.sbt = ut.clear_file(self.filename)
         count = 0
         try:
             for i in self.sbt:

@@ -10,7 +10,6 @@ class IntermediateCode:
         self.filename = fn
         self.log_path = lp
         self.py_imc = []
-        self.is_m_comment = False
         self.scope = 0
         self.__tokenize_text()
         self.__write_imc()
@@ -31,7 +30,7 @@ class IntermediateCode:
         return trimmed_val
     
     def __tokenize_text(self):
-        for i in ut.clear_file(self.filename, self.is_m_comment):
+        for i in ut.clear_file(self.filename):
             if "}" in i[0]:
                 self.scope -= 1
             elif (i[0] == "bool" or i[0] == "num" or i[0] == "str") and not ('[' in i[1] or ']' in i[1]):
