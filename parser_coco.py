@@ -1,3 +1,4 @@
+import util as ut
 from parser_components import iterate
 from parser_components import unless
 from parser_components import exec_unless
@@ -8,7 +9,11 @@ class Parse:
     def __init__(self, tk):
         self.tokens = tk
         self.scope = 0
+        ut.check_verbosity(f"{ut.bcolors.BOLD}---  Parser  ---{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Starting to Parse...{ut.bcolors.ENDC}")
         self.prse()
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Parsing Done Successfully...{ut.bcolors.ENDC}")
+        ut.check_verbosity()
 
     def raise_error(self):
         raise Exception("Error While Parsing")
@@ -53,4 +58,4 @@ class Parse:
                 else:
                     self.scope += 1
         if self.scope > 0:
-            raise Exception("Missing token(s) \"}\"") 
+            raise Exception("Missing token(s) \"}\"")

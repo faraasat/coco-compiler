@@ -11,8 +11,15 @@ class IntermediateCode:
         self.log_path = lp
         self.py_imc = []
         self.scope = 0
+        ut.check_verbosity(f"{ut.bcolors.BOLD}---  Intermediate Code Generator  ---{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Tokening Text and Generating Intermediate Code...{ut.bcolors.ENDC}")
         self.__tokenize_text()
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Tokening Intermediate Code Generation Done Successfully...{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Writing Generated Intermediate Code...{ut.bcolors.ENDC}")
         self.__write_imc()
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Intermediate Code Written Successfully At:{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.CYELLOW}\t   -   {os.path.join(self.log_path, 'imc.txt')}{ut.bcolors.ENDC}")
+        ut.check_verbosity()
 
     def check_arr(self, i):
         is_arr = False

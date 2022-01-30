@@ -8,7 +8,10 @@ class TypeCheck:
             raise Exception("Invalid Path Provided!")
         self.filename = fn
         self.sbt = []
+        ut.check_verbosity(f"{ut.bcolors.BOLD}---  Tokenizer  ---{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Starting Type Check...{ut.bcolors.ENDC}")
         self.__check_type()
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Type Check Done Succesfully...{ut.bcolors.ENDC}")
 
     def __error(self, msg):
         raise Exception(f"Datatype Error in \"{msg[0]} {msg[1]}\", Value and Datatype do not match!")

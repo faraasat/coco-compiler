@@ -12,9 +12,18 @@ class SymbolTable:
         self.tokens = []
         self.scope = 0
         self.table = []
+        ut.check_verbosity(f"{ut.bcolors.BOLD}---  Symbol Table  ---{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Setting Scope...{ut.bcolors.ENDC}")
         self.__set_scope()
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Scope Set Successfully...{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Generating Symbol Table...{ut.bcolors.ENDC}")
         self.__gen_symbol_table()
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Symbol Table Generated Successfully...{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Writing Symbol Table...{ut.bcolors.ENDC}")
         self.__write_table()
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Symbol Table Written Successfully At:{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.CYELLOW}\t   -   {os.path.join(self.log_path, 'symbol_table.txt')}{ut.bcolors.ENDC}")
+        ut.check_verbosity()
 
     def __set_scope(self):
         self.sbt = ut.clear_file(self.filename)

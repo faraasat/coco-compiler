@@ -99,14 +99,21 @@ class Tokenize:
         self.log_path = lp
         self.pre_tokens = []
         self.tokens = []
+        ut.check_verbosity(f"{ut.bcolors.BOLD}---  Tokenizer  ---{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Starting Token Generation...{ut.bcolors.ENDC}")
         self.__tokenize_text()
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Tokens Generated Successfully...{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Writing Tokens...{ut.bcolors.ENDC}")
+        self.__write_tokens()
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Tokens Written Successfully At:{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.CYELLOW}\t   -   {os.path.join(self.log_path, 'test.txt')}{ut.bcolors.ENDC}")
+        ut.check_verbosity()
     
     def __tokenize_text(self):
         gt = Generate_Tokens(ut.clear_file(self.filename))
         self.pre_tokens = gt.get_pre_tokens()
         lex = gt.iter_pre_token()
         self.tokens = lex
-        self.__write_tokens()        
 
     def __write_tokens(self):
         open(os.path.join(self.log_path, "token.txt"), "w+").close()

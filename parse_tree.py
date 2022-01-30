@@ -93,7 +93,10 @@ class ParseTree:
         self.cleaned_tokens = []
         self.nl_len = 0
         self.parse_tree = []
+        ut.check_verbosity(f"{ut.bcolors.BOLD}---  Parse Tree  ---{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Cleaning the Tokens...{ut.bcolors.ENDC}")
         self.clean()
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Tokens Cleaned Successfully...{ut.bcolors.ENDC}")
         self.parse_tree_gen()
     
     def clean(self):
@@ -109,26 +112,39 @@ class ParseTree:
         self.cleaned_tokens = GeneratePTTokens(nl).iter_pre_token()
 
     def parse_tree_gen(self):
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Generating Grammar...{ut.bcolors.ENDC}")
         grammar = ptc.parse_missing(self.cleaned_tokens)
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Grammar Generated Successfully...{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Parsing the Grammar...{ut.bcolors.ENDC}")
         a = []
         parser = nltk.ChartParser(grammar)
         for tree in parser.parse(self.cleaned_tokens):
             a.append(tree)
         self.parse_tree.append(a)
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Grammar Parsed Successfully...{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Writing Parse Tree...{ut.bcolors.ENDC}")
         open(os.path.join(self.log_path, "parse_tree.txt"), "w+").close()
         fw = open(os.path.join(self.log_path, "parse_tree.txt"), "w")
         for i in self.parse_tree[0]:
             fw.write(str(str(i) + ' '))
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Parsed Tree Written Successfully At:{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.CYELLOW}\t   -   {os.path.join(self.log_path, 'test.txt')}{ut.bcolors.ENDC}")
         if ut.get_config()["generate_parse_tree_img"] == 1:
+            ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Generating Parse Tree Image...{ut.bcolors.ENDC}")
             self.parse_tree_img_gen(a[0])
+            ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Parse Tree Image Generated Successfully...{ut.bcolors.ENDC}")
+        ut.check_verbosity()
 
     def parse_tree_img_gen(self, prse_tree):
-        print("Converting Parse Tree...")
+        ut.check_verbosity(f"{ut.bcolors.OKCYAN}\t   #   Converting Parse Tree to Post Script...{ut.bcolors.ENDC}")
         TreeView(prse_tree)._cframe.print_to_file(os.path.join(self.log_path, "ptimg.ps"))
-        print("Converting Parse Tree Into PS...")
         psimage=Image.open(os.path.join(self.log_path, "ptimg.ps"))
-        print("Converting Parse Tree Into PNG...")
+        ut.check_verbosity(f"{ut.bcolors.OKCYAN}\t   #   Post Script Generated Successfully At:{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.CYELLOW}\t       -   {os.path.join(self.log_path, 'ptimg.ps')}{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKCYAN}\t   #   Converting Post Script to PNG...{ut.bcolors.ENDC}")
         psimage.save(os.path.join(self.log_path, "ptimg.png"))
+        ut.check_verbosity(f"{ut.bcolors.OKCYAN}\t   #   PNG Generated Successfully...{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.CYELLOW}\t       -   {os.path.join(self.log_path, 'ptimg.png')}{ut.bcolors.ENDC}")
 
 # For Testing Purpose
 if __name__ == "__main__":

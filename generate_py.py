@@ -8,7 +8,12 @@ class GeneratePy:
             raise Exception("Invalid Path Provided!")
         self.filename = fn
         self.log_path = lp
+        ut.check_verbosity(f"{ut.bcolors.BOLD}---  Python Executable File Generator  ---{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Starting Python File Genration...{ut.bcolors.ENDC}")
         self.convert_file()
+        ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Python Executable File Generated At:{ut.bcolors.ENDC}")
+        ut.check_verbosity(f"{ut.bcolors.CYELLOW}\t   -   {os.path.join(self.log_path, 'imc.py')}{ut.bcolors.ENDC}")
+        ut.check_verbosity()
 
     def convert_file(self):
         f = open(self.filename)

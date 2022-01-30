@@ -1,8 +1,9 @@
 {
-    "env": "testing",
+    "env": "production",
     "log_path": "_logs",
     "test_log_path": "_test",
-    "execute": 0,
+    "execute": 1,
     "generate_parse_tree": 1,
-    "generate_parse_tree_img": 1
+    "generate_parse_tree_img": 1,
+    "verbosity": 1
 }
