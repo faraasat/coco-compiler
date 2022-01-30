@@ -125,8 +125,7 @@ class ParseTree:
         ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Writing Parse Tree...{ut.bcolors.ENDC}")
         open(os.path.join(self.log_path, "parse_tree.txt"), "w+").close()
         fw = open(os.path.join(self.log_path, "parse_tree.txt"), "w")
-        for i in self.parse_tree[0]:
-            fw.write(str(str(i) + ' '))
+        fw.write(str(str(a[0]) + ' '))
         ut.check_verbosity(f"{ut.bcolors.OKBLUE}\t*  Parsed Tree Written Successfully At:{ut.bcolors.ENDC}")
         ut.check_verbosity(f"{ut.bcolors.CYELLOW}\t   -   {os.path.join(self.log_path, 'test.txt')}{ut.bcolors.ENDC}")
         if ut.get_config()["generate_parse_tree_img"] == 1:

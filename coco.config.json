@@ -1,5 +1,5 @@
 {
-    "env": "production",
+    "env": "testing",
     "log_path": "_logs",
     "test_log_path": "_test",
     "execute": 1,
