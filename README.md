@@ -29,14 +29,14 @@
 ### 🧷 Class Diagram:
 <p align="center">
   <a>
-    <img width='80%' src="class-diagram.png"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img width='80%' src="/img/class-diagram.png"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   </a>
 </p>
 
 ### 🎴 Program Flow:
 <p align="center">
   <a>
-    <img width='80%' src="program-flow.png"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img width='80%' src="/img/program-flow.png"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   </a>
 </p>
 
@@ -45,41 +45,41 @@
 ####  Tokens:
 <p align="center">
   <a href="/_logs/_test/token.txt">
-    <img width='80%' src="token.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img width='80%' src="/img/token.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   </a>
 </p>
 
 ####  Symbol Table:
 <p align="center">
   <a href="/_logs/_test/symbol_table.txt">
-    <img width='80%' src="symbol-table.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img width='80%' src="/img/symbol-table.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   </a>
 </p>
 
 ####  Parse Tree:
 <p align="center">
   <a href="/_logs/_test/parse_tree.txt">
-    <img width='80%' src="parse-tree.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img width='80%' src="/img/parse-tree.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   </a>
 </p>
 
 ####  Parse Tree Image:
 <p align="center">
   <a href="/_logs/_test/ptimg.png">
-    <img width='80%' src="ptimg.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img width='80%' src="/img/ptimg.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   </a>
 </p>
 
 ####  Intermediate Code:
 <p align="center">
   <a href="/_logs/_test/imc.txt">
-    <img width='80%' src="imc.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img width='80%' src="/img/imc.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   </a>
 </p>
 
 ####  Executable Intermediate Code:
 <p align="center">
   <a href="/_logs/_test/imc.py">
-    <img width='80%' src="imc-py.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img width='80%' src="/img/imc-py.PNG"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   </a>
 </p>
